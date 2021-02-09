@@ -1,0 +1,51 @@
+{% extends "users\base.html" %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Title</h1>
+        <p class="lead">Subtitle</p>
+        <hr class="my-4">
+        <p>Content</p>
+    </div>
+    <div class="container mt-4">
+        <div class="card mb-5 category-block" style="width: auto">
+            <div class="card-body">
+                <div class="mb-5">
+                    <h5 class="card-title">Categories</h5>
+                    <p class="card-text">Explore book categories of your choice, click on the link and join the action!</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 mb-4">
+                        <div class="color-label"></div>
+                        <div class="card category-block" style="width: 200px">
+                            <div class="card-body">
+                                <h5 class="card-title">Biographies</h5>
+                                <p class="card-text">Card content goes here</p>
+                                <a href="#" class="btn btn-primary">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-4">
+                        <div class="color-label" style="background: palevioletred;"></div>
+                        <div class="card category-block" style="width: 200px">
+                            <div class="card-body">
+                                <h5 class="card-title">Education</h5>
+                                <p class="card-text">Card content goes here</p>
+                                <a href="#" class="btn btn-primary">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-4">
+                        <div class="color-label" style="background: rgb(134, 210, 245);"></div>
+                        <div class="card category-block" style="width: 200px">
+                            <div class="card-body">
+                                <h5 class="card-title">Business</h5>
+                                <p class="card-text">Card content goes here</p>
+                                <a href="#" class="btn btn-primary">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

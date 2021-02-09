@@ -1,0 +1,28 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Book</title>
+    {{ form.media.css }}
+    <link rel="stylesheet" href="{% static 'users/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script defer src="{% static 'fontawesome/js/all.min.js' %}"></script>
+
+    {% comment %} <style>
+        input, select {width: 50%}
+    </style> {% endcomment %}
+</head>
+<body>
+    <div class="container col-5">
+        <h4 class="mt-5 mb-4">Add book</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy}}
+            <input class="btn btn-primary" type="submit">
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{ form.media.js }}
+</body>
+</html>
