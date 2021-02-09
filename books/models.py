@@ -35,7 +35,7 @@ class Category(models.Model):
         verbose_name_plural = 'Category'
 
 class Book(models.Model):
-    posted_by = models.OneToOneField(User, on_delete=models.deletion.DO_NOTHING, default=0)
+    posted_by = models.OneToOneField(User, on_delete=models.deletion.DO_NOTHING, null=True)
     title = models.CharField(max_length=100)
     author = models.ManyToManyField(Author, related_name='author')
     publisher = models.ForeignKey(Publisher, blank=True, null=True, on_delete=models.SET_NULL)

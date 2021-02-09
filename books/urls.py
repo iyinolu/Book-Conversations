@@ -7,5 +7,5 @@ urlpatterns = [
     path('meta/', display_meta, name='meta-info'),
     path('category-add/', add_category, name='add_category'),
     path('category-show/', show_category, name='show_category'),
-    path('test_bookform/', views.BookCreateView.as_view(), name='test_bookf'),
+    path('test_bookform/', views.BookCreateView.as_view(), name='test_book'),
 ]

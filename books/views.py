@@ -3,11 +3,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 from .forms import AuthorForm, BookForm, CreateCategoryForm
 from .models import Category
 
-from django.views import generic
+from django.views.generic import CreateView
 from . import forms, models
 
 # Create your views here.
@@ -46,7 +47,12 @@ def test_bookform(request):
 
 
 
-class BookCreateView(generic.CreateView):
+class BookCreateView(CreateView):
     model = models.Book
     form_class = forms.BookForm
-    success_url = "/"
+    success_url = reverse_lazy("landing-page")
+
+    def form_valid(self, form):
+        form.instance.posted_by = self.request.user
+        return super().form_valid(form)
+        

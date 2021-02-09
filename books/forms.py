@@ -12,6 +12,7 @@ class AuthorWidget(s2forms.ModelSelect2MultipleWidget):
         'last_name__icontains',
     ]
 
+    
 class CreateCategoryForm(forms.ModelForm):
     class Meta:
         model = Category
