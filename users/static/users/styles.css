@@ -1,3 +1,8 @@
+html::-webkit-scrollbar {
+    width: 0 !important;
+    display: none; 
+    }
+
 body {
     background: rgb(250, 250, 250) !important;
 }
@@ -9,6 +14,7 @@ body {
 
 .navbar-custom {
     position: relative;
+    background: #6E619D;
 }
 
 .category-block {
@@ -21,3 +27,22 @@ body {
     background: blueviolet;
     margin-bottom: 2px;
 }
+
+.lead__view {
+    background-image: url('/media/utils/sunset-485016_1920.png');
+    background-size: cover;
+    min-height: 900px;
+    min-width: 300px;    
+}
+
+.lead__view.h1.p {
+    color: white;
+}
+
+.jumbo__custom {
+    border-radius: 0% !important;
+}
+
+/* .cate-options-div {
+    background: #00AC96;
+} */

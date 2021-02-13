@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
+from django.contrib.auth.views import logout_then_login
 from .forms import *
 
 # Create your views here.
@@ -17,5 +18,8 @@ def register(request):
     else:
         user_form = UserRegisterForm()
     return render(request, "users/register.html", {'user_form':user_form})
+
+def logout(request):
+    return logout_then_login(request)
         
             

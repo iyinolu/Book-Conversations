@@ -7,3 +7,6 @@
 
 # Visual Studio Code #
 .vscode/*
+
+# Media Images
+media/*

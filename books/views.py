@@ -27,8 +27,7 @@ def add_category(request):
         if form.is_valid():
             form.save()
             return redirect('landing-page')
-            
-        
+               
     form = CreateCategoryForm()
     return render(request, 'books/create_category.html', {'form': form})
  
@@ -36,16 +35,13 @@ def show_category(request):
     categories = Category.objects.all()
     context = {'categories': categories}
 
-    return render(request, 'books/category_display.html', context)
+    return render(request, 'books/homepage.html', context)
 
 def test_bookform(request):
     form = BookForm()
     context = {'author':form}
 
     return render(request, 'books/test_bookform.html', context)
-
-
-
 
 class BookCreateView(CreateView):
     model = models.Book
@@ -56,3 +52,5 @@ class BookCreateView(CreateView):
         form.instance.posted_by = self.request.user
         return super().form_valid(form)
         
+def test_showbook(request):
+    return render(request, 'books/test_showbook.html', context={'n':range(10)})

@@ -5,7 +5,8 @@ from . import views
 
 urlpatterns = [
     path('meta/', display_meta, name='meta-info'),
-    path('category-add/', add_category, name='add_category'),
-    path('category-show/', show_category, name='show_category'),
+    path('category-add/', add_category, name='add-category'),
+    path('', show_category, name='show-category'),
     path('test_bookform/', views.BookCreateView.as_view(), name='test_book'),
+    path('test_showbook/', views.test_showbook)
 ]
