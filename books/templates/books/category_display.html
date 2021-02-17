@@ -1,13 +1,13 @@
 {% extends "users\base.html" %}
 {% block content %}
     <div class="row">
-        {% for category in categories %}
+        {% for book in category %}
         <div class="col-3">
             <div class="container mt-4">
                 <div class="card rounded-0" style="width: auto">
                     <img height=200px width=20rem class="card-img-top p-2"src="/media/category_picture/big sur.jpg">
                     <div class="card-body">
-                        <h5 class="card-title">{{ category.category_name }}</h5>
+                        <h5 class="card-title">{{ book.category_name }}</h5>
                         <p class="card-text">{{ category.description }}</p>
                         <a href="#" class="btn btn-primary">Explore</a>
                     </div>

@@ -36,7 +36,7 @@ class Category(models.Model):
 
 
 class Book(models.Model):
-    posted_by = models.OneToOneField(User, on_delete=models.deletion.DO_NOTHING, null=True)
+    posted_by = models.ForeignKey(User, on_delete=models.deletion.DO_NOTHING, null=True)
     title = models.CharField(max_length=100)
     author = models.ManyToManyField(Author, related_name='author')
     publisher = models.ForeignKey(Publisher, blank=True, null=True, on_delete=models.SET_NULL)

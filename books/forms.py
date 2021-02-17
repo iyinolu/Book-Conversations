@@ -33,7 +33,7 @@ class AuthorForm(forms.ModelForm):
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'author', 'publisher', 'category']
+        fields = ['title', 'author', 'publisher', 'category', 'book_thumbnail']
         widgets = {
             'author': AuthorWidget
         }

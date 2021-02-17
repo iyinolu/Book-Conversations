@@ -3,21 +3,21 @@
 
 
     <div class="container">
-        <h4 class="mb-5 mt-4">Book List</h4>
+        <h4 class="mb-5 mt-4">{{name}}</h4>
         <hr class="mb-4" style="color: grey;">
-        {% for i in n %}
+        {% for book in books %}
         <div style="display: flex;">
-        <img width="200px" src="/media/book_pictures/book-{{ i }}.jpg" alt="">
+        <img width="200px" src="{{ book.book_thumbnail.url }}" alt="">
         <div class="ml-5 col-6">
             <div class="mt-3" style="display: flex;">
-                <h3 class="mb-0">Book Title and Description</h3>
+                <h3 class="mb-0">{{ book.title }}</h3>
                 <div class="ml-auto justify-content-center">
                     <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
                       </svg>
                 </div>
             </div>
-            <small class ="text-muted">by some author and some other author</small>
+            <small class ="text-muted"><a href="">some author</a></small>
             <!-- <button type="button" class="btn btn-outline-info ">Share Insight</button> -->
             
             <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>        </div>
