@@ -1,0 +1,18 @@
+{% extends 'book_form.html' %}
+
+{% block javascript %}
+    <script>
+        $('#author_create').click(function () {
+           $.ajax({
+               url: '{% url "create-author" %}',
+               success: function (valid) {
+                   if (valid.validated) {
+                       alert('created')
+                   }
+               }
+           }); 
+        });
+    </script>
+
+{% endblock javascript %}
+

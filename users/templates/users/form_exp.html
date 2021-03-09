@@ -1,0 +1,58 @@
+
+
+
+<form method="POST" novalidate>
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+        <ul>
+            {% for error in form.non_field_errors%}
+            <li> {{ error }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% for hidden_field in form.hidden_fields %}
+        {% if hidden_field %}
+            <ul>
+                {% for error in hidden_field.errors%}
+                    <li>(Hidden field {{ hidden_field.name}}) {{ error }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ hidden_field }}
+    {% endfor %}
+
+    <table border="1">
+        {% for field in form.visible_fields %}
+            <tr>
+                <th>{{ field.label_tag }}</th>
+                <td>
+                    {% if field.errors%}
+                    <ul>
+                        {% for error in field.errors%}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    <ul>
+                    {% endif %}
+                       {% if "Email" in field.label_tag %}
+                            <div style="display: flex;">
+                                {{ field }}
+                                <p style="margin-block-start: 0; margin-block-end: 0;">hello text</p>            
+                            </div>
+                        {% else %}
+                            
+                            {{ field }}
+                        {% endif %}
+                    
+                    {% if field.help_text%}
+                        <br /> {{ field.help_text }}                        
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    form.label
+    
+    <button type="submit">Submit</button>
+</form>

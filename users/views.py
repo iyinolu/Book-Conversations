@@ -23,3 +23,21 @@ def logout(request):
     return logout_then_login(request)
         
             
+
+
+
+
+## TEST AREA
+from .forms import FormExp
+
+
+def form_exp(request):
+    if request.method == 'POST':
+        form = FormExp(request.POST)
+        if form.is_valid():
+            pass
+        pass
+    else:
+        form = FormExp()
+
+    return render(request, 'users/form_exp.html', {'form':form})
