@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'fontawesome',
     'crispy_forms',
     'django_select2',
+    'widget_tweaks',
     'books.apps.BooksConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
@@ -152,4 +153,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'landing-page'
 
-LOGIN_URL = 'login-view'
+LOGIN_URL = 'landing-page'

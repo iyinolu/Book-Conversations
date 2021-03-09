@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import display_meta, add_category, show_category, test_bookform
 from . import views
 
 
 urlpatterns = [
-    path('meta/', display_meta, name='meta-info'),
-    path('category-add/', add_category, name='add_category'),
-    path('category-show/', show_category, name='show_category'),
-    path('test_bookform/', views.BookCreateView.as_view(), name='test_book'),
+    path('meta/', views.display_meta, name='meta-info'),
+    path('category-add/', views.add_category, name='add-category'),
+    path('', views.landing_page, name='landing-page'),
+    path('book-add/', views.create_book, name='add-book'),
+    path('show-books/<int:id>', views.test_showbook, name='show-category')
 ]

@@ -9,14 +9,14 @@ class Profile(models.Model):
                                          upload_to='profile_pictures')
 
     def __str__(self):
-        return f'Profile: {self.user}'
+        return f'Profile: {self.user.username}'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
         img = Image.open(self.profile_picture.path)
         if img.height > 300 or img.width > 300:
-            size = (img.height, img.width)
+            size = (300, 300)
             img.thumbnail = size
             img.save(self.profile_picture.path, 
                     optimize=True, 

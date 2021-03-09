@@ -1,0 +1,48 @@
+{% extends "users\base.html" %}
+{% block content %}
+
+    <div class="jumbotron rounded-0 lead__view text-white">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 ml-4">
+                <h1 class="display-4 mt-5 font-weight-normal">Books make humans tick!</h1>
+                <p class="lead">This site wants you to have the best discussion <br> 
+                    with your fellow book lovers all around the world</p>
+                <hr class="my-4">
+                <p>Go ahead and explore the categories of your choice and <br> feel free to add a new book your are reading if you can't find them here
+                </p>
+            </div>
+            <!-- <div class="col-md-4 col-sm-6">
+                <img height="300px" src="/media/utils/undraw_reading_list_4boi (1).svg" alt="">
+            </div> -->
+        </div>
+    </div>
+</div>
+    <div class="container-flex mt-4 category-block">
+        <div class="card mb-5" style="width: auto">
+            <div class="card-body">
+                <div class="mb-5">
+                    <h5 class="card-title">Categories</h5>
+                    <p class="card-text">Explore book categories of your choice, click on the link and join the action!</p>
+                </div>
+                <div class="row cate-options-div">
+                    {% for category in categories %}
+                        <div class="col-md-3 col-sm-4 mb-4">
+                            <div class="color-label"></div>
+                            <div class="card category-block" style="width: 200px">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ category.category_name }}</h5>
+                                    <p class="card-text">{{ category.description }}</p>
+                                    <a href="{% url 'show-category' category.id %}" >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" color='black' fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

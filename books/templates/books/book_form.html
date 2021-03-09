@@ -1,28 +1,134 @@
+{% extends "users\base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Create Book</title>
-    {{ form.media.css }}
-    <link rel="stylesheet" href="{% static 'users/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <script defer src="{% static 'fontawesome/js/all.min.js' %}"></script>
+{% load widget_tweaks %}
 
-    {% comment %} <style>
-        input, select {width: 50%}
-    </style> {% endcomment %}
-</head>
+
+{% block content %}
 <body>
-    <div class="container col-5">
+    <div class="container col-6 mb-5">
         <h4 class="mt-5 mb-4">Add book</h4>
-        <form method="POST">
+        <form  method="POST" enctype="multipart/form-data" id="main-form">
             {% csrf_token %}
-            {{ form|crispy}}
-            <input class="btn btn-primary" type="submit">
+                        
+            {{ form.non_field_errors}}
+            {{ form.source.errors }}
+            {{ form.source }}
+                {% for field in form.visible_fields%}
+                    <div class="form-group">
+                        {% if 'thumbnail' not in field.label_tag %}
+                            {% if 'Author' in field.label_tag %}
+                            {{ field.label_tag }}
+                                <div>
+                                    {% render_field field class="form-control" style="width: 100%" %}    
+                                    <div class="new__author new__author_div">
+                                        <a href="#" class="text-muted mt-2 new__author_container" style="display: flex;" data-toggle="modal" data-target="#authorModal">
+                                            <svg class="new__author" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus pb-0" viewBox="0 0 16 16">
+                                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                                            </svg>
+                                            <p class="ml-2 new__author ">add new author</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                {{ field.label_tag }}
+                                {% render_field field class="form-control" %}
+                            {% endif %}
+                        {% else %}
+                            {{ field.label_tag }}
+                            {% render_field field style="display: block;" %}
+                        {% endif %}
+                    </div>
+                {% endfor %}            
+            <button class="btn btn-custom" type="submit" data-target="#main-form">Submit</button>
+            
         </form>
+        <div class="modal fade" id="authorModal" tabindex="-1" role="dialog" aria-labelledby="authorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="authorModalLabel">Add New Author</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <form  id="author_form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if author_form.hidden_field %}
+                                {% for field in author_form.hidden_field %}
+                                    {{ field }}
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if author_form.non_field_errors %}
+                                {% for error in author_form.non_field_errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            
+                            {% for field in author_form.visible_fields %}
+                                    <div class="form-group">
+                                        {{field.label_tag}}
+                                        {% with name=field.name %}
+                                            {% if name != "profile_image" %}
+                                                {% if author_form.is_bound %}
+                                                    {% if field.error %}
+                                                        {% render_field field class="form-control invalid" id=name %}
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% render_field field class="form-control" id=name %}
+                                                {% endif %}
+                                                
+                                                {% if field.help_text %}
+                                                    <small class="form-text text-muted">{{ field.help_text}}</small>
+                                                {% endif %}
+                                            {% else %}
+                                                {% render_field field class="form-control" id=name style="display: block; border: none; padding: 0 !important" %}
+                                                {% if field.help_text %}
+                                                    <small class="form-text text-muted">{{ field.help_text}}</small>
+                                                {% endif %}
+                                            {% endif %}    
+                                        {% endwith %}
+                                    </div>
+                            {% endfor %}
+                            <button id="author_create" class="btn btn-primary" type="submit" data-target="#main-form">Create</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button id="close-button" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     {{ form.media.js }}
+
+    <script>
+        $(document).on('submit', "#author_form", function(e) {
+            e.preventDefault();
+            $form = $(this)
+            var fdata = new FormData(this);
+            console.log('check')
+
+            $.ajax({
+                type: "POST",
+                url: "/test_bookform/",
+                data: fdata,
+                success: function() {
+                    $("#close-button").trigger("click");
+                },
+                contentType: false,
+                processData: false
+            });
+            
+        });
+    </script>
 </body>
-</html>
+{% endblock content %}
