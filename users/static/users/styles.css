@@ -8,20 +8,14 @@ body {
 }
 
 header {
-    /* position: sticky !important;     */
-    /* top: 0px; */
-    height: 80px;
-    overflow: hidden !important;
+    height: auto;
     background-color: #f7f7f7;
-    
-    /* color: #6e619d; */
-    /* box-shadow: 0px 10px 20px 0px rgb(175 175 175); */
-    /* z-index: 99; */
 }
 
 .navbar-custom {
     background: #f7f7f7;
     /* overflow: hidden; */
+    position: relative;
     
 }
 

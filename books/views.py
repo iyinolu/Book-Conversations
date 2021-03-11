@@ -98,16 +98,6 @@ class BookCreateView(CreateView):
         form.instance.posted_by = self.request.user
         return super().form_valid(form)
 
-
-
-
-
-
-
-
-
-
-
         
 def test_showbook(request, id=None):
     if id:
@@ -118,3 +108,8 @@ def test_showbook(request, id=None):
         context = {}
         
     return render(request, 'books/test_showbook.html', context)
+
+
+def test_view(request):
+    category = Category.objects.all()
+    return render(request, 'books/explore_category.html', {"category": category})

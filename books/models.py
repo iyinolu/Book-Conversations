@@ -26,6 +26,8 @@ class Author(models.Model):
 class Category(models.Model):
     category_name = models.CharField(max_length=40)
     description = models.TextField(max_length=200)
+    # category_image = models.ImageField(upload_to="", default="")
+
 
     def __str__(self):
         return self.category_name
@@ -44,7 +46,7 @@ class Book(models.Model):
     book_thumbnail = models.ImageField(default='default.png', upload_to='book_pictures')
 
     def __str__(self):
-        return f'Book: {self.title}'
+        return f'{self.title}'
 
 
 

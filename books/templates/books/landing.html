@@ -8,6 +8,7 @@
             height: 900px;
             color: #6e619d;
             border-radius: 30px;
+            position: relative;
         }
         .landing__message {
             margin: 20px 20px;
@@ -19,12 +20,26 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .landing__btn {
-            border:#6e619d 2px solid;
-            background-color: transparent;
-            color: #6e619d;
-            height: 40px;
-            width: 100px
+        .landing__btn-2 {
+            background: rgb(250, 250, 250);
+            height: 50px;
+            width: 150px;
+            border: 0px solid;
+            box-shadow:0px 5px 0px rgb(197, 197, 197);
+            border-radius: 10px;
+            color: rgb(54, 54, 54);
+            margin-right: 15px;
+        }
+
+        .landing__btn-1 {
+            background: radial-gradient(100% 100% at 100% 0%, #ffd0e3 0%, #6e619d 104%);
+            height: 50px;
+            width: 120px;
+            border: 0px solid;
+            box-shadow:0px 5px 0px rgb(85 25 128);
+            border-radius: 10px;
+            color: white;
+            text-shadow: 0px 2px 0px rgb(97, 97, 97);
         }
 
         .featured__grp {
@@ -48,6 +63,17 @@
         .center__img{
             margin: auto 0;
         }
+        .test__style {
+        background: radial-gradient(100% 100% at 100% 0%,
+        #89E5FF 0%,
+        #5468FF 100%);
+        height: 30px;
+        width: 100px;
+        border: 0px solid;
+        box-shadow:0px 5px 0px rgba(18, 35, 167, 1);
+        margin: 50px;
+        border-radius: 10px;
+    }
     </style>
 
     <div class="container landing__main col-11">
@@ -58,7 +84,10 @@
                 <hr style="color:#6e619d;">
                 <p style="padding-top:20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <button class="landing__btn mt-5">Explore</button>
+                <div style="display: flex;">
+                    <button action="{% url 'category-list' %}" class="landing__btn-1 mt-5 mr-4"><b>Explore</b></button>
+                    <button class="landing__btn-2 mt-5">Add a BookPost</button>
+                </div>
             </div>
             <div class="col-5 ml-5 mt-5">
                 <img height=300px src="/media/utils/undraw_book_lover_mkck (1).svg" alt="">
